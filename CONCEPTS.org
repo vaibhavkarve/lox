@@ -14,7 +14,7 @@ Interpreters.
   - Scanner: raw-source-code → series-of-tokens
   - This series of tokens will then be fed into a parser.
   - Implementing a REPL in lisp is as easy as
-    #+begin_src lisp
+    #+begin_src emacs-lisp
       ;; <REP> part of the <REPL>
       ;; Read it inside out.
       ;; Is there any language as intuitive as Lisp?
