@@ -4,6 +4,7 @@ This is my implementation of the Lox language, taken from the book Crafting
 Interpreters by Robert Nystrom.
 
 - link to free ebook :: https://craftinginterpreters.com/contents.html
+- link to Concepts notes :: [[file:CONCEPTS.org][CONCEPTS.org]]
 
 * Review of the book
   I absolutely love it so far <3 !! One of the most entertaining programming book I
