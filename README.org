@@ -1,4 +1,4 @@
-#+title: Readme for my implementation of Lox
+#+title: An implementation of Lox
 
 This is my implementation of the Lox language, taken from the book Crafting
 Interpreters by Robert Nystrom.
@@ -10,11 +10,30 @@ Interpreters by Robert Nystrom.
   have encountered!
   
 ** TODO Add more here
-  - What is this book about?
-  - What is lox?
-  - Why I liked this book?
-  - Who should read this book?
+  + What is this book about?
+  + What is lox?
+  + Why I liked this book?
+  + Who should read this book?
 
 * Java vs. Python
 ** Can I Java?
-** But I can Python
+   Not really, since I have never worked with the language before. This is a
+   good opportunity for me to learn though because
+   1. this is a really interesting project and serves as the perfect motivation
+      to learn Java,
+   2. I prefer learning the language for a real project rather than following
+      online tutorials for some toy problem, and
+   3. the author (RN) provides the complete Java code, requiring no knowlege from
+      my side -- I can just watch and absorb.
+
+** Oh but I can Python!
+   So I am also implementing Lox in Python. Advantages --
+   1. Python is my native tongue, I don't really need an excuse to use it :)
+   2. The Java snippets come from the author and I include them unedited.
+      I then translate each snippet to python, thus encouraging an active reading
+      of RN's code.
+   3. It is also encouraging an active learning of Java itself since I constantly
+      compare the differences between Java and Python when writing this code, while
+      also seeking answers to why things in Java are implemented in the style they
+      are.
+
