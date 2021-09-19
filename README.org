@@ -1,7 +1,7 @@
 #+title: An implementation of Lox
 
 This is my implementation of the Lox language, taken from the book Crafting
-Interpreters by Robert Nystrom.
+Interpreters by Robert Nystrom. It is currently a work in progress.
 
 - link to free ebook :: https://craftinginterpreters.com/contents.html
 - link to Concepts notes :: [[file:CONCEPTS.org][CONCEPTS.org]]
