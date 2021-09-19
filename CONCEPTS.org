@@ -1,1 +1,59 @@
 #+title: Concepts
+
+This file will collect my notes on the concepts encountered in Crafting
+Interpreters.
+
+* Chapter 1: Introduction
+** TODO Reread and add notes here
+* Chapter 2: A Map of the Territory
+** TODO Reread and add notes here
+* Chapter 3: The Lox Language
+** TODO Reread and add notes here
+* Chapter 4: Scanning
+  - The scanner is the first step in any interpreter or compiler.
+  - Scanner: raw-source-code → series-of-tokens
+  - This series of tokens will then be fed into a parser.
+  - Implementing a REPL in lisp is as easy as
+    #+begin_src lisp
+      ;; <REP> part of the <REPL>
+      ;; Read it inside out.
+      ;; Is there any language as intuitive as Lisp?
+      (print (eval (read)))
+    #+end_src
+
+  - Lox uses different system exit + error codes to represent different kinds of
+    errors. For example,
+    - error code 64 means that the command was used with the wrong number of
+      arguments.
+    - error code 65 means that the input file was incorrect in some way (say a
+      syntax error).
+    - the full "sorta"-standard can be found here:
+      [[https://www.freebsd.org/cgi/man.cgi?query=sysexits&apropos=0&sektion=0&manpath=FreeBSD+4.3-RELEASE&format=html][freebsd library functions manual: sysexits]].
+  - Error handling should be done /outside/ the scanner, compiler, etc. The
+    scanner, compiler can call the error handling class if needed.
+  - Raw code first gets chunked into small meaningful blocks called /lexemes/.
+    This is a syntactic unit.
+  - Grouping some lexemes, or interpreting them in the context of surrounding
+    lexemes gives them meaning. Lexeme + semantic meaning = /token/.
+
+    
+** Java compilation
+  - I installed java's development kit (~jdk-openjdk 16.0.2~).
+  - This installed the binaries ~javac~, which compiles say ~MyFile.java~ into a
+    device-independent bytecode file that can be run by the Java Virtual Machine
+    (JVM).
+  - Each class definition in ~MyFile.java~ get converted by ~javac~ into
+    ~First.class~, ~Second.class~ etc.
+  - These classes can then be run by the ~java~ interpreter as ~java First~,
+    etc.
+    
+* Chapter 5: Representing Code
+
+* Chapter 6: Parsing Expressions
+* Chapter 7: Evaluating Expressions
+* Chapter 8: Statements and State
+* Chapter 9: Control Flow
+* Chapter 10: Functions
+* Chapter 11: Resolving and Binding
+* Chapter 12: Classes
+* Chapter 13: Inheritance
