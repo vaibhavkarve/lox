@@ -15,12 +15,21 @@ Interpreters.
   - This series of tokens will then be fed into a parser.
   - Implementing a REPL in lisp is as easy as
     #+begin_src emacs-lisp
-      ;; <REP> part of the <REPL>
       ;; Read it inside out.
       ;; Is there any language as intuitive as Lisp?
-      (print (eval (read)))
+      (loop while 1
+       do (print (eval (read))))
     #+end_src
-
+  - Python get close but I personally find the Lisp code to be more elegant.
+    #+begin_src python
+      while True:
+          # A memory-less REPL. Needs a global register of variables to keep
+          # consistency between the eval and exec branch.
+          try:
+              print(eval(input('>>> ')))
+          except SyntaxError:
+              exec(input('>>> '))
+    #+end_src
   - Lox uses different system exit + error codes to represent different kinds of
     errors. For example,
     - error code 64 means that the command was used with the wrong number of
@@ -35,8 +44,33 @@ Interpreters.
     This is a syntactic unit.
   - Grouping some lexemes, or interpreting them in the context of surrounding
     lexemes gives them meaning. Lexeme + semantic meaning = /token/.
+  - The scanner looks at lexemes, turns them into tokens, and figures out context
+    in the form of the following data --
+    1. a token type: each keyword, each operator etc. has a different token type.
+    2. a literal value: the value of a numeral, or a string. Will be passed to
+       the runtime to be used by the interpreter.
+    3. location information -- where in the file is each token present.
+  - The scanner can calculate all kinds of useful integers --
+    - line number at which a lexeme appears
+    - visible length of lexeme
+    - column offset of lexeme etc.
+  - However, it is saves time and memory to calculate these numbers just before
+    error-reporting, that way we calculate them only for lexemes in question,
+    and not for every single lexeme we encounter.
+  - The scanner is a loop that consumes lexemes character-by-character, and emits
+    the smallest groupable collection of lexems as a token. Then it continues on
+    to the next lexeme, and so on ...
 
-    
+** Regular language
+   - The rules of how lexemes get grouped into tokens are called the /lexical
+     grammar/ of the language.
+   - If the lexical grammar rules of a formal language can be expressed using
+     regular expressions, then the language is a /regular language/.
+   - Alternatively, a regular language is a language recognized by a finite
+     automaton. (Kleene's theorem: these 2 definitions are equivalent.)
+   - There are tools that convert tables of regular expressions into a working
+     scanner for the grammar defined by the regexes. Examples -- Lex and Flex.
+     
 ** Java compilation
   - I installed java's development kit (~jdk-openjdk 16.0.2~).
   - This installed the binaries ~javac~, which compiles say ~MyFile.java~ into a
