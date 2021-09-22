@@ -8,6 +8,9 @@ from pathlib import Path
 import readline
 import sys
 
+from lox.scanner import Scanner
+from lox.token import Token
+
 class Lox:
     had_error: bool = False
 
@@ -25,7 +28,7 @@ class Lox:
     def run_file(cls, path: Path) -> None:
         """Thin wrapper around run()."""
         with open(path, "r") as readfile:
-            bytes: Iterator[str] = readfile.readlines()
+            bytes: str = readfile.read()
             cls.run(bytes)
         # Indicate an error in the exit code.
         if cls.had_error:
@@ -40,13 +43,13 @@ class Lox:
                 # Reached EOF because user input "C-d".
                 break
             cls.run(line)
-            cls.error = False  # Reset in order to continue session.
+            cls.had_error = False  # Reset in order to continue session.
 
     @classmethod
     def run(cls, source: str) -> None:
         """Core run command."""
         scanner: Scanner = Scanner(source)
-        tokens: List[Token] = scanner.scan_tokens()
+        tokens: list[Token] = scanner.scan_tokens()
 
         # For now, just print the tokens.
         token: Token
@@ -54,7 +57,7 @@ class Lox:
             print(token)
 
     @classmethod
-    def error(line: int, message: str) -> None:
+    def error(self, line: int, message: str) -> None:
         self.report(line, "", message)
 
     @classmethod
